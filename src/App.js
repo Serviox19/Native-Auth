@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import firebase from 'firebase';
+import Input from './components/Input';
+import Card from './components/Card';
+import CardItem from './components/CardItem';
 
 class App extends Component {
-  state = { loggedIn: null };
+  state = { email: '', password: '', error: '', loggedIn: null };
 
   componentWillMount() {
     firebase.initializeApp({
@@ -18,26 +21,37 @@ class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to This App
-        </Text>
+      <View style={styles.viewStyle}>
+        <Card>
+          <CardItem>
+            <Input
+              placeholder="user@gmail.com"
+              label="Email"
+              value={this.state.email}
+              onChangeText={(email) => this.setState({ email })}
+            />
+          </CardItem>
+          <CardItem>
+            <Input
+              secureTextEntry
+              placeholder="password"
+              label="password"
+              value={this.state.email}
+              onChangeText={(password) => this.setState({ password })}
+            />
+          </CardItem>
+          <CardItem>
+            <Text>Button</Text>
+          </CardItem>
+        </Card>
       </View>
     );
   }
 }
 
 const styles = {
-  container: {
-    flex: 1,
-    marginTop: 25,
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  viewStyle: {
+    marginTop: 25
   }
 };
 
