@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text, TextInput } from 'react-native';
 import Card from './Card';
 
@@ -11,6 +11,7 @@ const Input = ({secureTextEntry, label, placeholder, value, onChangeText}) => {
         secureTextEntry={secureTextEntry}
         placeholder={placeholder}
         autoCorrect={false}
+        autoCapitalize={'none'}
         value={value}
         onChangeText={onChangeText}
       />
@@ -26,8 +27,9 @@ const styles = {
     alignItems: 'center'
   },
   labelStyle: {
-    fontSize: 18,
-    paddingLeft: 20,
+    fontSize: 16,
+    fontWeight: '500',
+    paddingLeft: 10,
     flex: 1
   },
   inputStyle: {
