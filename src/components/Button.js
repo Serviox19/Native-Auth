@@ -13,7 +13,12 @@ const Button = ({ onSubmit }) => {
 
 const styles = {
   buttonStyle: {
-    margin: 5,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 80,
+    marginTop: 5,
+    marginBottom: 5,
     backgroundColor: '#007aff',
     borderRadius: 5,
     borderWidth: 1,
@@ -21,7 +26,8 @@ const styles = {
   },
   textStyle: {
     color: '#fff',
-    fontSize: 14,
+    fontSize: 16,
+    fontWeight: '500',
     padding: 5
   }
 };
