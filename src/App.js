@@ -11,12 +11,12 @@ class App extends Component {
 
   componentWillMount() {
     firebase.initializeApp({
-      apiKey: "AIzaSyAWW3I_Nvpw5ffInOZr4hWWTWBg-utSUNI",
-      authDomain: "native-auth-da159.firebaseapp.com",
-      databaseURL: "https://native-auth-da159.firebaseio.com",
-      projectId: "native-auth-da159",
-      storageBucket: "native-auth-da159.appspot.com",
-      messagingSenderId: "536115688324"
+      apiKey: 'AIzaSyAWW3I_Nvpw5ffInOZr4hWWTWBg-utSUNI',
+      authDomain: 'native-auth-da159.firebaseapp.com',
+      databaseURL: 'https://native-auth-da159.firebaseio.com',
+      projectId: 'native-auth-da159',
+      storageBucket: 'native-auth-da159.appspot.com',
+      messagingSenderId: '536115688324'
     });
 
     firebase.auth().onAuthStateChanged((user) => {
@@ -32,9 +32,12 @@ class App extends Component {
     switch (this.state.loggedIn) {
       case true:
         return (
-          <Button>
-            onSubmit={() => firebase.auth.signOut()}
-          </Button>
+          <View style={styles.loggedInStyle}>
+            <Text>Welcome: {this.state.user}</Text>
+            <Button onSubmit={() => firebase.auth().signOut()}>
+              Log Out
+            </Button>
+          </View>
         );
       case false:
         return <LoginForm />;
@@ -55,6 +58,12 @@ class App extends Component {
 const styles = {
   viewStyle: {
     marginTop: 25
+  },
+  loggedInStyle: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20
   }
 };
 
