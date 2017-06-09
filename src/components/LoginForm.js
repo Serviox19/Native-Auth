@@ -16,12 +16,12 @@ class LoginForm extends Component {
     this.setState({ error: '', loading: true });
 
     firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(this.onLoginSuccess.bind(this))
-    .catch(() => {
-      firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(this.onLoginSuccess.bind(this))
-        .catch(this.onLoginFail.bind(this));
-    });
+      .then(this.onLoginSuccess.bind(this))
+      .catch(() => {
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then(this.onLoginSuccess.bind(this))
+          .catch(this.onLoginFail.bind(this));
+      });
   };
 
   onLoginFail() {
@@ -43,9 +43,9 @@ class LoginForm extends Component {
     }
 
     return (
-      <Button
-        onSubmit={this.onButtonPress.bind(this)}
-      />
+      <Button onSubmit={this.onButtonPress.bind(this)}>
+        Login
+      </Button>
     );
   }
 
@@ -57,7 +57,7 @@ class LoginForm extends Component {
             placeholder="user@gmail.com"
             label="Email"
             value={this.state.email}
-            onChangeText={(email) => this.setState({ email })}
+            onChangeText={email => this.setState({ email })}
           />
         </CardItem>
         <CardItem>
@@ -66,7 +66,7 @@ class LoginForm extends Component {
             placeholder="password"
             label="Password"
             value={this.state.password}
-            onChangeText={(password) => this.setState({ password })}
+            onChangeText={password => this.setState({ password })}
           />
         </CardItem>
         <CardItem>

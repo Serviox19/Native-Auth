@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import firebase from 'firebase';
 import LoginForm from './components/LoginForm';
+import Button from './components/Button';
+import Spinner from './components/Spinner';
 
 class App extends Component {
 
@@ -16,12 +18,35 @@ class App extends Component {
       storageBucket: "native-auth-da159.appspot.com",
       messagingSenderId: "536115688324"
     });
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ loggedIn: true });
+      } else {
+        this.setState({ loggedIn: false });
+      }
+    });
+  }
+
+  renderContent() {
+    switch (this.state.loggedIn) {
+      case true:
+        return (
+          <Button>
+            onSubmit={() => firebase.auth.signOut()}
+          </Button>
+        );
+      case false:
+        return <LoginForm />;
+      default:
+        <Spinner size="large" />;
+    }
   }
 
   render() {
     return (
       <View style={styles.viewStyle}>
-        <LoginForm />
+        {this.renderContent()}
       </View>
     );
   }
