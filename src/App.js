@@ -7,7 +7,7 @@ import Spinner from './components/Spinner';
 
 class App extends Component {
 
-  state = { loggedIn: null };
+  state = { loggedIn: null, user: '' };
 
   componentWillMount() {
     firebase.initializeApp({
@@ -22,8 +22,10 @@ class App extends Component {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ loggedIn: true });
+        this.setState({ user: firebase.auth().currentUser.email });
       } else {
         this.setState({ loggedIn: false });
+        this.setState({ user: '' });
       }
     });
   }
@@ -34,9 +36,10 @@ class App extends Component {
         return (
           <View style={styles.loggedInStyle}>
             <Text>Welcome: {this.state.user}</Text>
-            <Button onSubmit={() => firebase.auth().signOut()}>
-              Log Out
-            </Button>
+            <Button
+              onSubmit={() => firebase.auth().signOut()}
+              buttonText="Sign-Out"
+            />
           </View>
         );
       case false:

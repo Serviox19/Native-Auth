@@ -43,41 +43,44 @@ class LoginForm extends Component {
     }
 
     return (
-      <Button onSubmit={this.onButtonPress.bind(this)}>
-        Login
-      </Button>
+      <Button
+        onSubmit={this.onButtonPress.bind(this)}
+        buttonText="Login"
+      />
     );
   }
 
   render() {
     return (
-      <Card>
-        <CardItem>
-          <Input
-            placeholder="user@gmail.com"
-            label="Email"
-            value={this.state.email}
-            onChangeText={email => this.setState({ email })}
-          />
-        </CardItem>
-        <CardItem>
-          <Input
-            secureTextEntry
-            placeholder="password"
-            label="Password"
-            value={this.state.password}
-            onChangeText={password => this.setState({ password })}
-          />
-        </CardItem>
-        <CardItem>
-          <View style={styles.buttonView}>
-            {this.showButton()}
-          </View>
-        </CardItem>
+      <View>
+        <Card>
+          <CardItem>
+            <Input
+              placeholder="user@gmail.com"
+              label="Email"
+              value={this.state.email}
+              onChangeText={email => this.setState({ email })}
+            />
+          </CardItem>
+          <CardItem>
+            <Input
+              secureTextEntry
+              placeholder="password"
+              label="Password"
+              value={this.state.password}
+              onChangeText={password => this.setState({ password })}
+            />
+          </CardItem>
+          <CardItem>
+            <View style={styles.buttonView}>
+              {this.showButton()}
+            </View>
+          </CardItem>
+        </Card>
         <Text style={styles.errorTextStyle}>
           {this.state.error}
         </Text>
-      </Card>
+      </View>
     );
   }
 };

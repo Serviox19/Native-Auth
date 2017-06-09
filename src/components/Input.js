@@ -12,6 +12,8 @@ const Input = ({secureTextEntry, label, placeholder, value, onChangeText}) => {
         placeholder={placeholder}
         autoCorrect={false}
         autoCapitalize={'none'}
+        returnKeyType={'next'}
+        autoFocus={true}
         value={value}
         onChangeText={onChangeText}
       />
@@ -28,7 +30,7 @@ const styles = {
   },
   labelStyle: {
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: '600',
     paddingLeft: 10,
     flex: 1
   },
